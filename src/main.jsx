@@ -1,10 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+ import "react-toastify/dist/ReactToastify.css";
 import './index.css'
+import { RouterProvider } from 'react-router-dom';
+import router from './components/Router/Router.jsx';
+  import { ToastContainer} from "react-toastify";
+import AuthProviders from './components/Providers/AuthProviders';
+import DataProvider from './components/Providers/DataProvider';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <DataProvider>
+      <AuthProviders>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </AuthProviders>
+    </DataProvider>
+  </React.StrictMode>
+);

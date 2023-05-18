@@ -14,3 +14,12 @@ body{
 .logo{
   font-family: 'Righteous', cursive!important;
 }
+
+/* .active{
+  @apply bg-sweetPink;
+ 
+} */
+
+.active:hover{
+  color:black!important;
+}
