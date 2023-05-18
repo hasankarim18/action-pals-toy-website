@@ -4,21 +4,33 @@ import { AuthContext } from "../../../../Providers/AuthProviders";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate()
 
-  console.log(user);
 
   const signOutNotify = ()=> toast('Sign Out Successful!')
 
+ 
+
 // handle sign out
   const handleSginOut = ()=> {
-    navigate('/')
-    signOutNotify()
+
+    logout()
+      .then(() => {
+        navigate("/");
+        signOutNotify();
+       // setUser(null)
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+   
   }
 
-  const classList = "text-xl hover:text-sweetPink"
-  const activeClass = "text-white p-2 rounded-md bg-sweetPink text-xl hover:text-gray-200 ";
+  const classList = "text-xl hover:text-white p-2 rounded-md hover:bg-sweetPink";
+  const activeClass =
+    "hover:text-gray-200 text-white p-2 rounded-md bg-sweetPink text-xl  ";
 
   const NavItems = (
     <>
@@ -145,6 +157,7 @@ const Navbar = () => {
           </button>
         )}
       </div>
+      
     </div>
   );
 };
