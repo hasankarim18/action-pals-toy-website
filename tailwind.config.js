@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         paste: "#2EBFED",
+        darkpaste: "#008db8",
         sweetPink: "#FF709F",
         white: "#fff",
       },

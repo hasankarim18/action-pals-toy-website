@@ -145,17 +145,26 @@ const Navbar = () => {
           {showUserName ? (
             <div className="mr-4 p-2">
               <p className=" p-1 rounded-lg text-paste tracking-widest">
-                {user?.displayName.length > 6 ? user.displayName.slice(0, 6)+"..." : user.displayName}
+                {user?.displayName !== null
+                  ? user?.displayName.length > 6
+                    ? user.displayName.slice(0, 6) + "..."
+                    : user.displayName
+                  : "Please update Name"}
               </p>
             </div>
           ) : null}
 
           <div className="relative">
             {user && (
-              <Link 
-               onMouseEnter={()=> { setShowUserName(true) }}
-               onMouseLeave={()=> { setShowUserName(false) }}
-               to="/user-profile">
+              <Link
+                onMouseEnter={() => {
+                  setShowUserName(true);
+                }}
+                onMouseLeave={() => {
+                  setShowUserName(false);
+                }}
+                to="/user-profile"
+              >
                 <img
                   style={{ width: "50px", height: "50px" }}
                   className="rounded-full border-4 border-paste"
