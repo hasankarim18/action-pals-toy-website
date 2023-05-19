@@ -9,12 +9,12 @@ import AuthProviders from './components/Providers/AuthProviders';
 import DataProvider from './components/Providers/DataProvider';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <React.Fragment>
     <DataProvider>
       <AuthProviders>
         <RouterProvider router={router} />
         <ToastContainer />
       </AuthProviders>
     </DataProvider>
-  </React.StrictMode>
+  </React.Fragment>
 );

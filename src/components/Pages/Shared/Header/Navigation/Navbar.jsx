@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../../Providers/AuthProviders";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const [showUserName, setShowUserName] = useState(false)
 
-  console.log(user?.photoURL);
+
   const userPhoto = user?.photoURL || "/user.png";
 
   const signOutNotify = ()=> toast('Sign Out Successful!')
@@ -141,11 +141,21 @@ const Navbar = () => {
         <ul className="flex gap-4 menu-horizontal px-1">{NavItems}</ul>
       </div>
       <div className="navbar-end">
-        <div className="mr-2">
-          <div></div>
-          <div>
+        <div className="mr-2 flex">
+          {showUserName ? (
+            <div className="mr-4 p-2">
+              <p className=" p-1 rounded-lg text-paste tracking-widest">
+                {user?.displayName.length > 6 ? user.displayName.slice(0, 6)+"..." : user.displayName}
+              </p>
+            </div>
+          ) : null}
+
+          <div className="relative">
             {user && (
-              <Link to="/user-profile">
+              <Link 
+               onMouseEnter={()=> { setShowUserName(true) }}
+               onMouseLeave={()=> { setShowUserName(false) }}
+               to="/user-profile">
                 <img
                   style={{ width: "50px", height: "50px" }}
                   className="rounded-full border-4 border-paste"

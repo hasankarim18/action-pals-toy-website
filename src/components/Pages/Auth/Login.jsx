@@ -32,6 +32,8 @@ const validate = (values) => {
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const { LogInWithEmailPassword, loginWithGoogle } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState('')
+
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -76,8 +78,9 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+        //  console.log(errorCode, errorMessage);
           // ..
+          setLoginError(`${errorMessage} with code ${errorCode}`)
         });
       
     },
@@ -104,7 +107,7 @@ const Login = () => {
           </div>
           <div className="form-control">
             <label className="label" htmlFor="lastName">
-              Last Name
+              Password
             </label>
             <div className="w-full relative ">
               <input
@@ -161,6 +164,9 @@ const Login = () => {
               Sign In With <FaGoogle />{" "}
             </button>
           </div> */}
+          <div className="my-4 text-rose-400">
+            {loginError !== "" && loginError}
+          </div>
           <div className="mt-4">
             <p className="text-xl">
               Dont Have Accoutn?{" "}
