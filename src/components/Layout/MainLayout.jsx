@@ -7,7 +7,7 @@ const MainLayout = () => {
       <div className="container mx-auto">
         <div className="ml-2 mr-2 md:ml-2 md:mr-2">
           <Header />
-          <div>
+          <div className="">
             <Outlet />
           </div>
           <Footer />
