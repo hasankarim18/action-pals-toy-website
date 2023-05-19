@@ -3,7 +3,7 @@
 ## [Action Pals Live Link](https://actionpals-aa2f0.web.app)
 - https://actionpals-aa2f0.web.app
 
-
+# All toys can be loaded by filter
 
 
 
