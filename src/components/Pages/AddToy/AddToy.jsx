@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { baseUrl } from "../../loaders/loaders";
 import { toast } from "react-toastify";
+import useTitle from "../../Hooks/useTitle";
 
 
 const AddToy = () => {
      const { user } = useContext(AuthContext);
+
+     useTitle('Add a toy')
 
      const seller_name = user?.displayName ? user.displayName : 'No name found please update your name';
      const seller_email = user?.email ? user.email : ' ';

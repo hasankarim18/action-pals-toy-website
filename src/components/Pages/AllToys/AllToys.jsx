@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../loaders/loaders";
+import useTitle from "../../Hooks/useTitle";
 
 
 
 const AllToys = () => {
    const [data, setData] = useState([])
-   const [showToysNumber, setShowToysNumber] = useState(10)
+   const [showToysNumber, setShowToysNumber] = useState(20)
+   useTitle('All Toys')
 
 
    const showResultHandler = (event)=> {
@@ -54,7 +56,7 @@ const AllToys = () => {
               {/* head */}
               <thead>
                 <tr>
-                  <th className="text-center"></th>
+                  
                   <th className="text-center">Si</th>
                   <th className="text-center">Seller Name</th>
                   <th className="text-center">Picture</th>
@@ -70,11 +72,7 @@ const AllToys = () => {
                 {data.map((item, i) => {
                   return (
                     <tr key={item._id}>
-                      <th>
-                        <label>
-                          <input type="checkbox" className="checkbox" />
-                        </label>
-                      </th>
+                      
                       <td>{i + 1}</td>
                       <td>
                         <p>{item.seller_name}</p>
@@ -129,8 +127,7 @@ const AllToys = () => {
               </tbody>
               {/* foot */}
               <tfoot>
-                <tr>
-                  <th></th>
+                <tr>                 
                   <th></th>
                   <th></th>
                   <th></th>
