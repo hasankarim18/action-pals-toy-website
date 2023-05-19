@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [showUserName, setShowUserName] = useState(false)
+  
 
 
   const userPhoto = user?.photoURL || "/user.png";

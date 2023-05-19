@@ -13,6 +13,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/all-toys",
         element: <AllToys />,
+       
       },
       {
         path: "/my-toys",

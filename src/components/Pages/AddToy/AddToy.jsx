@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { baseUrl } from "../../loaders/loaders";
+import { toast } from "react-toastify";
 
 
 const AddToy = () => {
@@ -14,7 +15,10 @@ const AddToy = () => {
      
 
     const handleAddToy = (event)=> {
-       
+        
+
+        const addToyToast = ()=> toast('Product Successfully added.')
+        const addToyToastFailed = ()=> toast('Product Adding Failed.')
 
         event.preventDefault()
         const form = event.target 
@@ -45,7 +49,17 @@ const AddToy = () => {
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: JSON.stringify(toyData),
-        });
+        })
+        .then(res => res.json())
+        .then(data => {
+            form.reset()
+            console.log(data);
+            addToyToast()
+        })
+        .catch(error => {
+            console.log(error);
+            addToyToastFailed()
+        })
     }
 
 
