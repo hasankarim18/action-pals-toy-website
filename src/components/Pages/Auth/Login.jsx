@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { toast } from "react-toastify";
 
 // A custom validation function. This must return an object
 // which keys are symmetrical to our values/initialValues
@@ -30,11 +31,29 @@ const validate = (values) => {
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const { LogInWithEmailPassword } = useContext(AuthContext);
+  const { LogInWithEmailPassword, loginWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleShowPassword = ()=> {
     setShowPassword(prev =>!prev)
+  }
+
+  let from = location.state?.from?.pathname || "/";
+
+  // login with google 
+  const loginWithGoogleHandler = ()=> {
+    loginWithGoogle()
+      .then(() => {
+        const notify = ()=> toast("Social sing in successful")
+        notify()
+        navigate(from)
+      })
+      .catch((error) => {
+       
+        console.log(error);
+        // ...
+      });
   }
   
   const formik = useFormik({
@@ -51,7 +70,7 @@ const Login = () => {
           // Signed in
          // const user = userCredential.user;
           // setUser(user)
-          navigate('/')
+          navigate(from)
           // ...
         })
         .catch((error) => {
@@ -91,7 +110,7 @@ const Login = () => {
               <input
                 id="password"
                 name="password"
-                type={showPassword ? "text": 'password'}
+                type={showPassword ? "text" : "password"}
                 onChange={formik.handleChange}
                 value={formik.values.password}
                 className="input w-full input-bordered"
@@ -130,7 +149,10 @@ const Login = () => {
         </form>
         <div className="mt-8">
           <div className="">
-            <button className="flex  items-center btn capitalize text-2xl w-full gap-4 ">
+            <button
+              onClick={loginWithGoogleHandler}
+              className="flex  items-center btn capitalize text-2xl w-full gap-4 "
+            >
               Sign In With <FaGoogle />
             </button>
           </div>

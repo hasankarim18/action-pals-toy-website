@@ -7,6 +7,8 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate()
 
+  console.log(user?.photoURL);
+  const userPhoto = user?.photoURL || "/user.png";
 
   const signOutNotify = ()=> toast('Sign Out Successful!')
 
@@ -17,7 +19,7 @@ const Navbar = () => {
 
     logout()
       .then(() => {
-        navigate("/");
+       // navigate("/");
         signOutNotify();
        // setUser(null)
 
@@ -139,6 +141,21 @@ const Navbar = () => {
         <ul className="flex gap-4 menu-horizontal px-1">{NavItems}</ul>
       </div>
       <div className="navbar-end">
+        <div className="mr-2">
+          <div></div>
+          <div>
+            {user && (
+              <Link to="/user-profile">
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  className="rounded-full border-4 border-paste"
+                  src={`${userPhoto} `}
+                  alt="user"
+                />
+              </Link>
+            )}
+          </div>
+        </div>
         {!user ? (
           <Link
             className=" transition-all  duration-500 p-2 rounded-md  text-white   hover:bg-white hover:text-paste bg-paste border-2 border-paste "
@@ -157,7 +174,6 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      
     </div>
   );
 };
