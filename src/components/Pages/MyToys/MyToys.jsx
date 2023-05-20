@@ -5,6 +5,9 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import useTitle from "../../Hooks/useTitle";
 import LazyLoad from "react-lazy-load";
 import Spinner from "../../utils/Spinner";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 
 
 const MyToys = () => {
@@ -14,7 +17,8 @@ const MyToys = () => {
     const [isLoading, setIsLoading] = useState(true)
     useTitle("My Toys")
 
-    console.log(myToys);
+    const MySwal = withReactContent(Swal);
+
 
     const handleSortOrder = (event)=> {
         setSortOrder(event.target.value)
@@ -22,7 +26,9 @@ const MyToys = () => {
 
     useEffect(() => {
       fetch(`${baseUrl}/mytoys?email=${user?.email}&sortOrder=${sortOrder}`)
-        .then((res) => res.json())
+        .then((res) => {
+            return res.json();
+        })
         .then((data) => {
           setMyToys(data);
           setIsLoading(false)
@@ -32,8 +38,40 @@ const MyToys = () => {
           setIsLoading(false)
         });
     }, [user.email, sortOrder])
-    
 
+
+
+    const deleteMyToyHandler = (id)=> {
+      
+       MySwal.fire({
+         title: "Do you want delete a toy?",
+        // showDenyButton: true,
+         showCancelButton: true,
+         confirmButtonText: "Delete",
+        // denyButtonText: `Don't save`,
+       }).then((result) => {
+         /* Read more about isConfirmed, isDenied below */
+         if (result.isConfirmed) {
+           fetch(`${baseUrl}/toys/${id}`, {
+             method: "DELETE",
+           })
+             .then((res) => res.json())
+             .then((data) => {
+               console.log(data);
+               if (data.acknowledged && data.deletedCount > 0) {
+                 const remainingToys = myToys.filter((toy) => toy._id !== id);
+                 setMyToys(remainingToys);
+                 Swal.fire("Deleted Successfully!");
+               }
+             })
+             .catch((error) => {
+               console.log(error);
+               Swal.fire("Deleted not possible please try again later.");
+             });
+         }
+
+       });   
+  }
 
     return (
       <>
@@ -83,12 +121,16 @@ const MyToys = () => {
                     return (
                       <tr key={item._id}>
                         <th>
-                          <label
-                            title="delete"
-                            className="p-2 cursor-pointer bg-red-400 w-8 h-8 flex items-center justify-center text-white rounded-full"
+                          <button 
+                          onClick={()=> {deleteMyToyHandler(item._id)}}
                           >
-                            X
-                          </label>
+                            <span
+                              title="delete"
+                              className="p-2 cursor-pointer bg-red-400 w-8 h-8 flex items-center justify-center text-white rounded-full"
+                            >
+                              X
+                            </span>
+                          </button>
                         </th>
                         <td>
                           <div className="flex items-center space-x-3">
