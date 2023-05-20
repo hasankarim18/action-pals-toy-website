@@ -13,10 +13,7 @@ const Toy = ({ data, loadError }) => {
     showError = loadError 
   }
 
-  console.log(data);
-
-  
-
+ 
   return (
     <tbody>
       {showError && (
