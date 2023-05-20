@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
     
     
-    const useTitle = ({title}) => {
+    const useTitle = (title) => {
         useEffect(() => {
             document.title = `${title} | Action Pals`
         }, [title])

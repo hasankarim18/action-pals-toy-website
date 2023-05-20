@@ -5,6 +5,7 @@ import Toy from "./Toy";
 import axios from "axios";
 import SmallSpinner from "../../utils/SmallSpinner";
 
+
 const AllToys = () => {
   const [data, setData] = useState([]);
   const [showToysNumber, setShowToysNumber] = useState(20);

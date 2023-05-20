@@ -1,3 +1,4 @@
+import LazyLoad from "react-lazy-load";
 
 
 const Toy = ({ data, loadError }) => {
@@ -31,11 +32,13 @@ const Toy = ({ data, loadError }) => {
               <div className="flex items-center justify-center space-x-3">
                 <div className="avatar">
                   <div className="mask text-center flex items-center justify-center mask-squircle w-12 h-12">
-                    <img
-                      src={item.picture}
-                      alt="Avatar Tailwind CSS Component"
-                      className="mx-auto"
-                    />
+                    <LazyLoad className="w-12 h-12">
+                      <img
+                        src={item.picture}
+                        alt="Avatar Tailwind CSS Component"
+                        className="mx-auto"
+                      />
+                    </LazyLoad>
                   </div>
                 </div>
               </div>

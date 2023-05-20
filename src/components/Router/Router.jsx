@@ -13,6 +13,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 import EditToy from "../Pages/EditToy/EditToy";
 import { baseUrl } from "../loaders/loaders";
+import Home from "../Pages/Home/Home";
 
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <Error />,
     children: [
+      {
+        path:"/",
+        element:<Home />
+      },
       {
         path: "/all-toys",
         element: <AllToys />,

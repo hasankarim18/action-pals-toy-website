@@ -1,0 +1,59 @@
+
+.home_banner{
+    display: block;
+}
+
+.home_banner .swiper-pagination{
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center;
+    gap: 20px;
+}
+.home_banner .swiper-pagination .swiper-pagination-bullet {
+    width: 30px;
+    height: 30px;
+    font-weight: 700;
+    color: white;
+    background-color:#2EBFED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.home_banner .swiper-pagination .swiper-pagination-bullet:hover{
+    background-color: #FF709F;
+}
+
+.home_banner .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+     background-color: #FF709F;
+}
+
+.home_banner .swiper-button-next{
+    color:#FF709F
+}
+
+
+
+.home_banner .swiper-button-prev{
+    color: #FF709F;
+}
+
+.home_banner .swiper-button-prev.swiper-button-disabled{
+    color:#2EBFED;
+}
+
+.home_banner .swiper-button-next.swiper-button-disabled{
+     color:#2EBFED;
+}
+
+/**
+
+       darkpaste: "#008db8",
+        sweetPink: "#FF709F",
+
+         paste: "#2EBFED",
+
+**/
