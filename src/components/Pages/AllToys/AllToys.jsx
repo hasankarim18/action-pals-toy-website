@@ -1,148 +1,144 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../loaders/loaders";
 import useTitle from "../../Hooks/useTitle";
-
-
+import Toy from "./Toy";
+import axios from "axios";
+import SmallSpinner from "../../utils/SmallSpinner";
 
 const AllToys = () => {
-   const [data, setData] = useState([])
-   const [showToysNumber, setShowToysNumber] = useState(20)
-   useTitle('All Toys')
+  const [data, setData] = useState([]);
+  const [showToysNumber, setShowToysNumber] = useState(20);
+  const [searchText, setSearchText] = useState("");
+  const [debouncedSearchText, setDebouncedSearchText] = useState("");
+  const [loadError, setLoadError] = useState('')
+  const [isSearching, setIsSearching] = useState(false)
+  useTitle("All Toys");
 
+  const showResultHandler = (event) => {
+    setShowToysNumber(event.target.value);
+  };
 
-   const showResultHandler = (event)=> {
-        console.log(event.target.value);
-        setShowToysNumber(event.target.value)
-   }
+  const searchTextHandler = (event) => {
+    setSearchText(event.target.value);
+  };
 
-   useEffect(() => {
-     fetch(`${baseUrl}/toys?limit=${showToysNumber}`)
-       .then((res) => {
-         return res.json();
-       })
-       .then((data) => {
-         setData(data);
-       })
-       .catch((error) => {
-         console.log(error);
-       });
-   }, [showToysNumber]);
+    useEffect(() => {
+      axios.get(`${baseUrl}/toys?limit=${showToysNumber}&name=${debouncedSearchText}`)       
+        .then((data) => {
+        //   console.log(data);
+          //  console.log("fetch");
+          setIsSearching(false)
+          setData(data.data);
+        })
+        .catch((error) => {
+         // console.log(error);
+           setIsSearching(false);
+          setLoadError(error.message);
+        });
+    }, [showToysNumber, debouncedSearchText]);
+
+      useEffect(() => {
+        let timer;
+        setIsSearching(true)
+        // Update debouncedSearchText after 20 seconds of stop typing
+        timer = setTimeout(() => {
+          setDebouncedSearchText(searchText);
+          
+        }, 5000); // Delay time in milliseconds
+
+        return () => {
+          clearTimeout(timer);
+        };
+      }, [searchText]);
+
    
+      const startSearchBtn = () => {
+        setDebouncedSearchText(searchText);
+         setIsSearching(false);
+      };
 
-   
+      const startSearchByEnter = (event) => {
+        if (event.key === "Enter") {
+          setDebouncedSearchText(searchText);
+           setIsSearching(false);
+        }
+      };
 
-    return (
-      <div>
-        <h1 className="text-6xl my-4">Toy Category: Comic Books Toy </h1>
-
-        <div>
-          <div className="overflow-x-auto w-full">
-            <div className="my-4 w-full flex justify-end">
-              <div>
-                <span className="text-2xl">Show Result: </span>
-                <select
-                  onChange={showResultHandler}
-                  value={showToysNumber}                 
-                  className="w-40 text-center text-2xl"
-                >
-                  <option value="20">20</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                  <option value="1000">All</option>                 
-                </select>
-              </div>
+  return (
+    <div>
+      <h1 className="text-3xl my-4">Toy Category: Comic Books Toy </h1>
+      <div className="mt-4  flex items-center justify-start gap-4">
+        <div className=" w-3/4 md:w-1/2 relative">
+          <input
+            onChange={searchTextHandler}
+            onKeyUp={startSearchByEnter}
+            type="text"
+            className="border-2 w-full p-2 relative "
+            placeholder="Search Toy By Name"
+          />
+          {isSearching && (
+            <div className="absolute top-2 right-1">
+              <SmallSpinner />
             </div>
-            <table className="table w-full text-cener">
-              {/* head */}
-              <thead>
-                <tr>
-                  
-                  <th className="text-center">Si</th>
-                  <th className="text-center">Seller Name</th>
-                  <th className="text-center">Picture</th>
-                  <th className="text-center">Toy Name</th>
-                  <th className="text-center">Sub Category</th>
-                  <th className="text-center">Price</th>
-                  <th className="text-center">Available Quantity</th>
-                  <th className="text-center">View Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* row 1 */}
-                {data.map((item, i) => {
-                  return (
-                    <tr key={item._id}>
-                      
-                      <td>{i + 1}</td>
-                      <td>
-                        <p>{item.seller_name}</p>
-                      </td>
-                      <td>
-                        <div className="flex items-center justify-center space-x-3">
-                          <div className="avatar">
-                            <div className="mask text-center flex items-center justify-center mask-squircle w-12 h-12">
-                              <img
-                                src={item.picture}
-                                alt="Avatar Tailwind CSS Component"
-                                className="mx-auto"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="text-center">
-                        {item.name}
-                        <br />
-                      </td>
-                      <td>
-                        <p className="capitalize text-center">
-                          {item.sub_category}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="capitalize text-center">
-                          {" "}
-                          ${item.price}/-
-                        </p>
-                      </td>
-                      <td>
-                        <p className="capitalize text-center">
-                          {" "}
-                          {item.available_quantity}
-                        </p>
-                      </td>
-                      <th className="text-center">
-                        <button className="btn btn-ghost btn-xs">
-                          details
-                        </button>
-                      </th>
-                    </tr>
-                  );
-                })}
-                {/* row 2 */}
-
-                {/* row 3 */}
-
-                {/* row 4 */}
-              </tbody>
-              {/* foot */}
-              <tfoot>
-                <tr>                 
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </tfoot>
-            </table>
+          )}
+        </div>
+        <button
+          onClick={startSearchBtn}
+          className="btn btn-outline btn-success"
+        >
+          Search{" "}
+        </button>
+      </div>
+      <div>
+        <div className="overflow-x-auto w-full">
+          <div className="my-4 w-full flex justify-end">
+            <div>
+              <span className="text-2xl">Show Result: </span>
+              <select
+                onChange={showResultHandler}
+                value={showToysNumber}
+                className="w-40 text-center text-2xl"
+              >
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="1000">All</option>
+              </select>
+            </div>
           </div>
+          <table className="table w-full text-cener">
+            {/* head */}
+            <thead>
+              <tr>
+                <th className="text-center">Si</th>
+                <th className="text-center">Seller Name</th>
+                <th className="text-center">Picture</th>
+                <th className="text-center">Toy Name</th>
+                <th className="text-center">Sub Category</th>
+                <th className="text-center">Price</th>
+                <th className="text-center">Available Quantity</th>
+                <th className="text-center">View Details</th>
+              </tr>
+            </thead>
+            <Toy data={data} loadError={loadError} />
+            {/* foot */}
+            <tfoot>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default AllToys;
