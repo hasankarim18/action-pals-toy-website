@@ -11,7 +11,7 @@ const useLoadCatLatest = ( cat_name, baseUrl,  setData, setLoading) => {
         axios
           .get(`${baseUrl}/category?name=${cat_name}`)
           .then((data) => {
-            console.log(data);
+           
             setData(data);
             setLoading(false);
           })

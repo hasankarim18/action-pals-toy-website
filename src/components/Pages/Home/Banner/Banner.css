@@ -4,6 +4,9 @@
 }
 
 .home_banner .swiper-pagination{
+    background-color: white;
+    padding-top: 20px;
+    
     display: flex!important;
     align-items: center!important;
     justify-content: center;
@@ -15,38 +18,46 @@
     font-weight: 700;
     color: white;
     background-color:#2EBFED;
+   
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100%;
     cursor: pointer;
     transition: 0.3s all;
+    opacity: 1;
 }
 
 .home_banner .swiper-pagination .swiper-pagination-bullet:hover{
     background-color: #FF709F;
+     opacity: 1;
 }
 
 .home_banner .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
      background-color: #FF709F;
+      opacity: 1;
 }
 
 .home_banner .swiper-button-next{
-    color:#FF709F
+    color:#FF709F;
+     opacity: 1;
 }
 
 
 
 .home_banner .swiper-button-prev{
     color: #FF709F;
+     opacity: 1;
 }
 
 .home_banner .swiper-button-prev.swiper-button-disabled{
     color:#2EBFED;
+     opacity: 1;
 }
 
 .home_banner .swiper-button-next.swiper-button-disabled{
      color:#2EBFED;
+      opacity: 1;
 }
 
 /**

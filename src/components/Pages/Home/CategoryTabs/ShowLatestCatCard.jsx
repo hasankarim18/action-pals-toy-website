@@ -14,8 +14,8 @@ const ShowLatestCatCard = ({img, name, rating, id, price}) => {
           </figure>
           <div className="card-body justify-center items-center text-center">
             <h2 className="card-title">{name}</h2>
-            <p className="text-center">{showRating}</p>
-            <p>Price: $ {price}</p>
+            <div className="text-center">{showRating}</div>
+            <div>Price: $ {price}</div>
             <div className="card-actions justify-center">
               <Link
                 to={`/toy/${id}`}

@@ -57,9 +57,9 @@ const AddToy = () => {
           body: JSON.stringify(toyData),
         })
         .then(res => res.json())
-        .then(data => {
+        .then(() => {
             form.reset()
-            console.log(data);
+         //   console.log(data);
             addToyToast()
         })
         .catch(error => {

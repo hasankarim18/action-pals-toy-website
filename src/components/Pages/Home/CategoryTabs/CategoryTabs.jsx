@@ -8,8 +8,9 @@ import Transformers from "./Transformers";
 const CategoryTabs = () => {
     
   return (
-    <div className="mt-8 mb-8" >
-      <h2 className="text-3xl mb-4">Shop By Category</h2>
+    <div className="mt-8 mb-8">
+      <h2 className="text-3xl text-center mb-8 ">Shop By Category</h2>
+      <hr className="mb-8" />
       <Tabs>
         <TabList>
           <Tab>Marvel</Tab>
@@ -25,10 +26,10 @@ const CategoryTabs = () => {
           <JusticeLeague />
         </TabPanel>
         <TabPanel>
-         <StarWars />
+          <StarWars />
         </TabPanel>
         <TabPanel>
-         <Transformers />
+          <Transformers />
         </TabPanel>
       </Tabs>
     </div>

@@ -42,7 +42,7 @@ const Banner = () => {
 
     const  data = loadLatest.data.data || []
        return (
-         <div style={{ height: "400px" }} className="home_banner">
+         <div style={{ height: "600px" }} className="home_banner">
           
            <Swiper
              navigation={true}
@@ -59,15 +59,16 @@ const Banner = () => {
                return (
                  <SwiperSlide key={item._id} className="w-full">
                    <div
-                     style={{ height: "380px" }}
+                     style={{ height: "580px" }}
                      className="w-full flex justify-center items-center bg-white"
                    >
                      <div
                        className="hero"
                        style={{
                          backgroundImage: `url(${item.picture})`,
-                         backgroundPosition: "contain",
-                         height: "350px",
+                         backgroundPosition: "cover",
+                         height: "560px",
+                         backgroundRepeat:"no-repeat"
                        }}
                      >
                        <div className="hero-overlay bg-opacity-60"></div>
