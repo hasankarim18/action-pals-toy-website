@@ -162,7 +162,7 @@ const MyToys = () => {
                           </Link>
                         </td>
                         <th>
-                          <Link to="/toy" className="btn btn-ghost btn-xs">
+                          <Link to={`/toy/${item._id}`} className="btn btn-ghost btn-xs">
                             details
                           </Link>
                         </th>

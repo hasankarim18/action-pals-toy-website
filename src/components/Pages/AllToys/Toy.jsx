@@ -1,5 +1,6 @@
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
+import ShowRating from "../../Hooks/ShowRatings";
 
 
 const Toy = ({ data, loadError }) => {
@@ -12,6 +13,10 @@ const Toy = ({ data, loadError }) => {
     showError = loadError 
   }
 
+  console.log(data);
+
+  
+
   return (
     <tbody>
       {showError && (
@@ -23,6 +28,9 @@ const Toy = ({ data, loadError }) => {
       )}
       {/* row 1 */}
       {data.map((item, i) => {
+        const rating = item.rating;
+
+        const showRating = <ShowRating rating={rating} textSize="" marginRight="1"  />
         return (
           <tr key={item._id}>
             <td>{i + 1}</td>
@@ -60,8 +68,11 @@ const Toy = ({ data, loadError }) => {
                 {item.available_quantity}
               </p>
             </td>
+            <td>{showRating}</td>
             <th className="text-center">
-              <Link to={`/toy/${item._id}`} className="btn btn-ghost btn-xs">details</Link>
+              <Link to={`/toy/${item._id}`} className="btn btn-ghost btn-xs">
+                details
+              </Link>
             </th>
           </tr>
         );

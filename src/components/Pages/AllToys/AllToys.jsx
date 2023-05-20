@@ -115,10 +115,11 @@ const AllToys = () => {
                 <th className="text-center">Seller Name</th>
                 <th className="text-center">Picture</th>
                 <th className="text-center">Toy Name</th>
-                <th className="text-center">Sub Category</th>
+                <th className="text-center">Category</th>
                 <th className="text-center">Price</th>
-                <th className="text-center">Available Quantity</th>
-                <th className="text-center">View Details</th>
+                <th className="text-center">Available Q.</th>
+                <th className="text-center">Raitings</th>
+                <th className="text-center">Details</th>
               </tr>
             </thead>
             <Toy data={data} loadError={loadError} />

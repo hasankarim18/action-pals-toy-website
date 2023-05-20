@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import useShowRating from "../../Hooks/useShowRating";
+
 
 
 const ToyDetails = () => {
@@ -17,30 +18,10 @@ const ToyDetails = () => {
         available_quantity,
         description,
       } = data;
+   
 
-    //  console.log(data);
-
-      const showDescription = description || "No description found."
-
-     // const ratingInt = parseInt(rating, 10)
-      const ratingInt = 3
-
-       
-
-    
-
-     const stars = Array.from({ length: ratingInt }, (_, index) => (
-       <span className="mr-3 text-xl" key={index}>
-            <FaStar />
-       </span>
-     ));
-    
-     const emptyStart = Array.from({ length: 5 - ratingInt }, (_, index) => (
-       <span className="mr-3 text-xl" key={index}>
-         <FaRegStar />
-       </span>
-     ));
-
+    const showDescription = description || "No description found."     
+    const ShowRating2 = useShowRating(rating, "xl",2)
 
     return (
       <div>
@@ -51,16 +32,17 @@ const ToyDetails = () => {
               <p className="py-6">{showDescription}</p>
               <h3 className="text-xl capitalize">
                 Category: <span className="text-sweetPink">{sub_category}</span>{" "}
-              </h3>
-              <div className="my-2 flex gap-4 items-center">
-                <span className="text-xl">Rating:</span>
-                <div className="p-2 flex text-sweetPink ">
-                  {stars} {emptyStart}
-                </div>
+              </h3>              
+              {ShowRating2}
+              {/* rating */}
+              <div className="mt-3 font-semibold">
+                Available Quantity: {available_quantity}
               </div>
+              <div className="mt-2">Seller Name : {seller_name}</div>
+              <div className="mt-2">Seller Email: {seller_email}</div>
 
               <div className="mt-4">
-                <button className="btn btn-primary">Get Started</button>
+                {/* <button className="btn btn-primary">Get Started</button> */}
               </div>
             </div>
             <div>
