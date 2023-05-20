@@ -11,6 +11,8 @@ import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
+import EditToy from "../Pages/EditToy/EditToy";
+import { baseUrl } from "../loaders/loaders";
 
 
 
@@ -23,7 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/all-toys",
         element: <AllToys />,
-       
       },
       {
         path: "/my-toys",
@@ -60,6 +61,16 @@ const router = createBrowserRouter([
             <UserProfile />
           </PrivateRoute>
         ),
+      },
+      {
+        path: `/edit-toy/:id`,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <EditToy />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`${baseUrl}/toy/${params.id}`),
       },
     ],
   },

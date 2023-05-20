@@ -32,7 +32,9 @@ const AddToy = () => {
         const price = form.price.value 
         const sub_category = form.sub_category.value 
         const rating      = form.rating.value
-        const available_quantity = form.available_quantity.value        
+        const available_quantity = form.available_quantity.value    
+        const description = form.short_description.value;    
+       
         
         const toyData = {
           name,
@@ -43,6 +45,7 @@ const AddToy = () => {
           sub_category,
           available_quantity,
           rating,
+          description,
         };
 
         fetch(`${baseUrl}/toys`, {
@@ -98,7 +101,7 @@ const AddToy = () => {
                 {/* seller name */}
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-bold">3. Seller Name</span>
+                    <span className="label-text font-bold">3. Seller Name (read Only) </span>
                   </label>
                   <input
                     defaultValue={seller_name}
@@ -113,7 +116,7 @@ const AddToy = () => {
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-bold">
-                      4. Seller Email
+                      4. Seller Email (read only)
                     </span>
                   </label>
                   <input
@@ -217,11 +220,12 @@ const AddToy = () => {
                       9. Short Description
                     </span>
                   </label>
-                  <textarea
-                    type="textarea"
+                  <input
+                    type="text"
                     placeholder="Short Description"
                     className="input input-bordered"
                     name="short_description"
+                    
                   />
                 </div>
                 <div className="form-control mt-6">

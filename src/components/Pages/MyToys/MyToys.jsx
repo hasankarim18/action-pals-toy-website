@@ -7,6 +7,7 @@ import LazyLoad from "react-lazy-load";
 import Spinner from "../../utils/Spinner";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { Link } from "react-router-dom";
 
 
 
@@ -110,6 +111,7 @@ const MyToys = () => {
                     </th>
                     <th>Picture</th>
                     <th>Name</th>
+                    <th>Sub Category</th>
                     <th>Price</th>
                     <th>Available Q.</th>
                     <th>Edit</th>
@@ -121,8 +123,10 @@ const MyToys = () => {
                     return (
                       <tr key={item._id}>
                         <th>
-                          <button 
-                          onClick={()=> {deleteMyToyHandler(item._id)}}
+                          <button
+                            onClick={() => {
+                              deleteMyToyHandler(item._id);
+                            }}
                           >
                             <span
                               title="delete"
@@ -144,18 +148,23 @@ const MyToys = () => {
                           </div>
                         </td>
                         <td>{item.name}</td>
+                        <td>
+                          <span className="capitalize">
+                            {item.sub_category}
+                          </span>
+                        </td>
                         <td>${item.price}/-</td>
 
                         <td>{item.available_quantity}</td>
                         <td>
-                          <button className="btn btn-xs btn-success text-white">
+                          <Link to={`/edit-toy/${item._id}`} className="btn btn-xs btn-success text-white">
                             Edit
-                          </button>
+                          </Link>
                         </td>
                         <th>
-                          <button className="btn btn-ghost btn-xs">
+                          <Link to="/toy" className="btn btn-ghost btn-xs">
                             details
-                          </button>
+                          </Link>
                         </th>
                       </tr>
                     );
