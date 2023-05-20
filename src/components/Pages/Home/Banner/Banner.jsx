@@ -9,8 +9,8 @@ import { useContext } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Banner.css";
-import { DataContext } from "../../Providers/DataProvider";
-import Spinner from "../../utils/Spinner";
+import { DataContext } from "../../../Providers/DataProvider";
+import Spinner from "../../../utils/Spinner";
 import { Link } from "react-router-dom";
 
 

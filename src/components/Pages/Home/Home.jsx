@@ -1,5 +1,6 @@
 import useTitle from "../../Hooks/useTitle";
-import Banner from "./Banner";
+import Banner from "./Banner/Banner";
+import CategoryTabs from "./CategoryTabs/CategoryTabs";
 
 
 const Home = () => {
@@ -9,6 +10,9 @@ const Home = () => {
     return (
         <div>
             <Banner />
+            <div className="mt-4">
+                <CategoryTabs />
+            </div>
         </div>
     );
 };

@@ -8,6 +8,17 @@ const DataProvider = ({children}) => {
    
     const [loadLatest, setLoadLatest] = useState([])
     const [loadLatestLoading, setLoadLatestLoading] = useState(true)
+    const [loadMarveLatest, setLoadMarveLatest] = useState([])
+    const [loadingMarvel, setLoadingMarvel] = useState(true)
+    const [justiceLatest, setJusticeLatest] = useState([])
+    const [loadingJusticeLeague, setloadingJusticeLeague] = useState(true)
+    // start wars 
+    const [starWars, setStarWars] = useState([])
+    const [loadingSartWars, setLoadingSartWars] = useState(true)
+    // trans former 
+   const [transformerCatLatest, setTransformerCatLatest] = useState([])
+   const [loadingTransformerCateLatest, setLoadingTransformerCateLatest] = useState(true)
+    
 
     useEffect(() => {
         axios
@@ -28,9 +39,25 @@ const DataProvider = ({children}) => {
     
 
     const data = {
-        loadLatest,
-        loadLatestLoading
-    }
+      loadLatest,
+      loadLatestLoading,
+      loadMarveLatest,
+      loadingMarvel,
+      setLoadMarveLatest,
+      setLoadingMarvel,
+      justiceLatest,
+      setJusticeLatest,
+      loadingJusticeLeague,
+      setloadingJusticeLeague,
+      starWars,
+      setStarWars,
+      loadingSartWars,
+      setLoadingSartWars,
+      transformerCatLatest,
+      setTransformerCatLatest,
+      loadingTransformerCateLatest,
+      setLoadingTransformerCateLatest,
+    };
 
 
     return (
