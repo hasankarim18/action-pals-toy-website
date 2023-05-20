@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import EditToy from "../Pages/EditToy/EditToy";
 import { baseUrl } from "../loaders/loaders";
 import Home from "../Pages/Home/Home";
+import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 
 
 
@@ -24,8 +25,8 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path:"/",
-        element:<Home />
+        path: "/",
+        element: <Home />,
       },
       {
         path: "/all-toys",
@@ -73,6 +74,16 @@ const router = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <EditToy />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`${baseUrl}/toy/${params.id}`),
+      },
+      {
+        path: "/toy/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ToyDetails />{" "}
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`${baseUrl}/toy/${params.id}`),

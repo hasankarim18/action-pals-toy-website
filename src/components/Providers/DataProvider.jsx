@@ -1,13 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const DataContext = createContext()
 
 const DataProvider = ({children}) => {
-    // const [latestToy, setLatestToy] = useState([])
+   
 
     
-
-
 
     const data = {}
 
@@ -20,3 +18,4 @@ const DataProvider = ({children}) => {
 };
 
 export default DataProvider;
+

@@ -1,4 +1,5 @@
 import LazyLoad from "react-lazy-load";
+import { Link } from "react-router-dom";
 
 
 const Toy = ({ data, loadError }) => {
@@ -60,7 +61,7 @@ const Toy = ({ data, loadError }) => {
               </p>
             </td>
             <th className="text-center">
-              <button className="btn btn-ghost btn-xs">details</button>
+              <Link to={`/toy/${item._id}`} className="btn btn-ghost btn-xs">details</Link>
             </th>
           </tr>
         );
