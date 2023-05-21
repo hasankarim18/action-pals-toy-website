@@ -7,7 +7,7 @@ const FooterLinks = () => {
         <div className="mt-4">
             <ul className="text-xl flex flex-col gap-3 ">
                 <li><Link className="hover:text-sweetPink" to="/all-toys" > All Toys </Link></li>
-                <li><Link className="hover:text-sweetPink" to="/about" > About Us </Link></li>
+                <li><Link className="hover:text-sweetPink" to="/" > About Us </Link></li>
                 <li><Link className="hover:text-sweetPink" to="/blogs" > Blog </Link></li>
             </ul>
         </div>

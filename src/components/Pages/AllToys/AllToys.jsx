@@ -98,7 +98,7 @@ const AllToys = () => {
               <select
                 onChange={showResultHandler}
                 value={showToysNumber}
-                className="w-40 text-center text-2xl"
+                className="w-40 text-center border-2 text-2xl"
               >
                 <option value="20">20</option>
                 <option value="50">50</option>
