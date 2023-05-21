@@ -62,7 +62,12 @@ const AuthProviders = ({children}) => {
     };
 
 
-
+    const updateUserProfile = (user, displayName, photoURL) => {
+      return updateProfile(user, {
+        displayName: displayName,
+        photoURL: photoURL,
+      });
+    };
 
 
 
@@ -83,6 +88,7 @@ const AuthProviders = ({children}) => {
       loginWithGoogle,
       createUser,
       updateUserInfo,
+      updateUserProfile,
     };
 
     return (

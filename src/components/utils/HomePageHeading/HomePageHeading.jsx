@@ -10,11 +10,13 @@ const HomePageHeading = ({children, className}) => {
           data-aos="flip-right"
           className={`
         text-3xl    
-        md:text-5xl
+        md:text-3xl
          mb-8
          capitalize
-         text-center text-paste
+         text-center text-black
          font-bold
+         logo
+         tracking-widest
          ${className}`}
         >
           {children}
