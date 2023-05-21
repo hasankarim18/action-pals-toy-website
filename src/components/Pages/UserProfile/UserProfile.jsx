@@ -20,7 +20,7 @@ const style = {
 const UserProfile = () => {
     useTitle("User Profile")
     const {user} = useContext(AuthContext)
-    console.log(user);
+ 
 
      const [open, setOpen] = useState(false);
      const handleOpen = () => setOpen(true);
@@ -51,8 +51,10 @@ const UserProfile = () => {
               </span>
             )}
           </div>
-          <div className="mt-4" >
-            <button className="btn btn-success text-white" onClick={handleOpen}>Edit Profile</button>
+          <div className="mt-4">
+            <button className="btn btn-success text-white" onClick={handleOpen}>
+              Edit Profile
+            </button>
           </div>
         </div>
         <div>
@@ -63,11 +65,16 @@ const UserProfile = () => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <UpdataUserProfile user={user} />
-              <div className="text-right" >
+              <UpdataUserProfile setOpen={setOpen} user={user} />
+              <div className="text-right">
                 <button
-                 onClick={()=> {setOpen(false)}}
-                 className="bg-rose-400 text-white rounded-lg p-2">Close</button>
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                  className="bg-rose-400 text-white rounded-lg p-2"
+                >
+                  Close
+                </button>
               </div>
             </Box>
           </Modal>
