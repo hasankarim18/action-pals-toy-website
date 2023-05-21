@@ -58,7 +58,7 @@ const MyToys = () => {
            })
              .then((res) => res.json())
              .then((data) => {
-               console.log(data);
+             
                if (data.acknowledged && data.deletedCount > 0) {
                  const remainingToys = myToys.filter((toy) => toy._id !== id);
                  setMyToys(remainingToys);

@@ -5,13 +5,16 @@ import JusticeLeague from "./JusticeLeague";
 import StarWars from "./StarWars";
 import Transformers from "./Transformers";
 import HomePageHeading from "../../../utils/HomePageHeading/HomePageHeading";
+import AOS from 'aos'
 
 
 const CategoryTabs = () => {
-      
+      AOS.init()
   return (
-    <div  className="mt-8 mb-8">
-      <HomePageHeading>Shop by category</HomePageHeading>
+    <div className="mt-8 mb-8">
+      <div >
+        <HomePageHeading>Shop by category</HomePageHeading>
+      </div>
       <Tabs>
         <TabList>
           <Tab>Marvel</Tab>
