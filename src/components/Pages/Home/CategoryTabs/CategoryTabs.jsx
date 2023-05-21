@@ -6,13 +6,12 @@ import StarWars from "./StarWars";
 import Transformers from "./Transformers";
 import HomePageHeading from "../../../utils/HomePageHeading/HomePageHeading";
 
+
 const CategoryTabs = () => {
-    
+      
   return (
-    <div className="mt-8 mb-8">
-      <HomePageHeading > 
-        Shop by category
-      </HomePageHeading>
+    <div  className="mt-8 mb-8">
+      <HomePageHeading>Shop by category</HomePageHeading>
       <Tabs>
         <TabList>
           <Tab>Marvel</Tab>

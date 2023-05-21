@@ -1,8 +1,10 @@
 import LazyLoad from "react-lazy-load";
+import AOS from "aos";
+
 
 
 const PartNers = () => {
-
+   AOS.init();
     const imgArray = [
       { name: "compayName", logo: "https://i.ibb.co/2NtDs8d/7.png" },
       { name: "compayName", logo: "https://i.ibb.co/C9c9BWD/1.png" },
@@ -15,9 +17,11 @@ const PartNers = () => {
 
 
     return (
-      <div >
-        <div className="flex justify-around flex-wrap gap-8 ">
-        
+      <div>
+        <div
+          data-aos="flip-left"
+          className="flex justify-around flex-wrap gap-8 "
+        >
           {imgArray.map((img, i) => {
             return (
               <div key={i}>

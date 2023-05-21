@@ -16,7 +16,9 @@ import { Link } from "react-router-dom";
 import Spinner from "../../../utils/Spinner";
 import LazyLoad from "react-lazy-load";
 
+
 const Gallery = () => {
+    
 
     const [toprated, setToprated] = useState([])
     const [loadingToprated, setLoadingToprated] = useState(true)
@@ -52,8 +54,10 @@ const Gallery = () => {
   }else {
  return (
    <div className="w-full">
-     {toprated.data.data.length === 0 && <h3 className="text-3xl text-center">No data found</h3> }
-     <div className="w-full sm:w-3/4 md:2/4 mx-auto">
+     {toprated.data.data.length === 0 && (
+       <h3 className="text-3xl text-center">No data found</h3>
+     )}
+     <div  className="w-full sm:w-3/4 md:2/4 mx-auto">
        <>
          <Swiper
            effect={"coverflow"}

@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-       // paste: "#2EBFED",
+        // paste: "#2EBFED",
         darkpaste: "#008db8",
-        paste: "#008db8",
-        sweetPink: "#FF709F",
+        paste: "#51B59F",
+        sweetPink: "#FF7798",
         white: "#fff",
       },
     },

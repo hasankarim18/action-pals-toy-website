@@ -8,6 +8,11 @@ import router from './components/Router/Router.jsx';
 import AuthProviders from './components/Providers/AuthProviders';
 import DataProvider from './components/Providers/DataProvider';
 
+
+import "aos/dist/aos.css"; // You can also use <link> for styles
+// ..
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.Fragment>
     <DataProvider>
