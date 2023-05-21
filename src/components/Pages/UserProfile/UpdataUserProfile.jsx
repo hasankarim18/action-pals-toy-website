@@ -25,7 +25,7 @@ const UpdataUserProfile = ({ user, setOpen }) => {
         setOpen(true)
       });
 
-    console.log(name, photo);
+  
   };
 
   return (

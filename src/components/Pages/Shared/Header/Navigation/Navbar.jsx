@@ -144,7 +144,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="mr-2 flex">
           {showUserName ? (
-            <div className="mr-4 p-2">
+            <div className="hidden sm:block  mr-4 p-2">
               <p className=" p-1 rounded-lg text-paste tracking-widest">
                 {user?.displayName !== null
                   ? user?.displayName.length > 6
