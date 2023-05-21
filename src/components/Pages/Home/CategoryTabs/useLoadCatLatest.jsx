@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 
 
-const useLoadCatLatest = ( cat_name, baseUrl,  setData, setLoading) => {
+const useLoadCatLatest = ( cat_name, baseUrl,  setData, setLoading, setLoadError) => {
 
     useEffect(() => {
         axios
@@ -15,8 +15,10 @@ const useLoadCatLatest = ( cat_name, baseUrl,  setData, setLoading) => {
             setData(data);
             setLoading(false);
           })
-          .catch((error) => console.log(error));
-    }, [setData, setLoading, cat_name, baseUrl])
+          .catch((error) => {
+            setLoadError(error)
+          });
+    }, [setData, setLoading, cat_name, baseUrl, setLoadError])
     
 
     

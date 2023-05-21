@@ -3,16 +3,19 @@ import { DataContext } from "../../../Providers/DataProvider";
 import useLoadCatLatest from "./useLoadCatLatest";
 import { baseUrl } from "../../../loaders/loaders";
 import ShowLatestCatCard from "./ShowLatestCatCard";
+import Spinner from "../../../utils/Spinner";
 
 
 const Transformers = () => {
 
     const {
-         transformerCatLatest,
+      transformerCatLatest,
       setTransformerCatLatest,
       loadingTransformerCateLatest,
       setLoadingTransformerCateLatest,
-    } = useContext(DataContext)
+      tranformerError,
+      setTranformerError,
+    } = useContext(DataContext);
 
     const cat_name = "transformers";
 
@@ -20,14 +23,27 @@ const Transformers = () => {
       cat_name,
       baseUrl,
       setTransformerCatLatest,
-      setLoadingTransformerCateLatest
+      setLoadingTransformerCateLatest,
+      setTranformerError
     );
 
     if (loadingTransformerCateLatest) {
-      return "Loading";
+      return (
+        <div>
+          <div>
+            <Spinner />
+          </div>
+          {tranformerError !== null && (
+            <h3 className="text-3xl text-rose-400">{tranformerError.message}</h3>
+          )}
+        </div>
+      );
     } else {
       return (
         <div className="grid grid-cols-1 md:grid-cols-3 mt-4 gap-8">
+          {transformerCatLatest.data.data.length === 0 && (
+            <h3 className="text-3xl">No data found</h3>
+          )}
           {transformerCatLatest.data.data.map((item) => {
             return (
               <ShowLatestCatCard
