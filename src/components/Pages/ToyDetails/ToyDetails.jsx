@@ -48,7 +48,7 @@ const ToyDetails = () => {
             <div>
               <img
                 src={picture}
-                className="max-w-sm rounded-lg shadow-2xl  mx-auto w-96 w-max-96 "
+                className="max-w-sm rounded-lg shadow-2xl  mx-auto w-full w-max-96 "
               />
             </div>
           </div>
